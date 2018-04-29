@@ -9,7 +9,7 @@ allowed-failures:
 services:
   - mysql
 env:
-  - DJANGO=2.0 DB=mysql
+  - DJANGO_VERSION=2.0 DB=mysql
 install:
   - pip install -q Django==$DJANGO_VERSION
   - python setup.py -q install
