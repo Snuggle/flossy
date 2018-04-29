@@ -1,19 +1,11 @@
 {% extends 'messages/base.html' %}
-
-{% block title %} {% endblock %}
+{% load staticfiles %}
 
 {% block body %}
-<h3>Contacts:</h3>
-  {% if my_contacts %}
-    <ul>
-      {% for contact in my_contacts %}
-      <li><a href="/messages/{{ contact.id }}/">{{ contact.contact }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <h2>You don't have any contacts!</h2>
-  {% endif %}
-<footer>
-  Flossy.me
-</footer>
+<div class="container-fluid">
+
+    <h1>Hi</h1>
+
+</div>
+
 {% endblock %}

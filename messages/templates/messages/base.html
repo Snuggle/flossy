@@ -5,37 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Flossy{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'messages/style.css' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'messages/navbar-fixed-left.css' %}"/>
 </head>
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-left">
   <div class="container">
-    <div class="navbar-header">
-    <a class="navbar-brand" href="#">Flossy</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img id="logo" src="{% static 'messages/images/floss.png' %}"></img></a>
+        </div>
+    <div id="topNavBar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+          <li class="{% block contacts-active %}{% endblock %}"><a href="/messages"><i class="fa fa-address-book" ></i>&nbsp; My Contacts</a></li>
+          <li class="{% block add-contact-active %}{% endblock %}"><a href="/messages"><i class="fa fa-plus" ></i>&nbsp; Add Contact</a></li>
+          <li class="{% block settings-active %}{% endblock %}"><a href="/messages"><i class="fa fa-gear" ></i>&nbsp; Settings</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="{% block admin-active %}{% endblock %}"><a href="/admin"><i class="fa fa-database" ></i>&nbsp; Admin</a></li>
+      <li class="">
+        <li class=""><a href="/logout"><i class="fa fa-power-off" ></i>&nbsp; Logout</a></li>
+      </li>
+    </ul>
     </div>
   </div>
 </nav>

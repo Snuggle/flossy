@@ -1,0 +1,17 @@
+{% extends 'messages/base.html' %}
+{% block contacts-active %}active{% endblock %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+<h3>Contacts</h3>
+  {% if my_contacts %}
+    <ul>
+      {% for contact in my_contacts %}
+      <strong><a href="/messages/{{ contact.id }}/">{{ contact.contact }}</a></strong><br>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>You don't have any contacts!</h2>
+  {% endif %}
+{% endblock %}

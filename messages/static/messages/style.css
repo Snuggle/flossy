@@ -1,7 +1,3 @@
-body{
-  background: white url("images/background.png")
-}
-
 .navbar-inverse{
   background-color: #343a40
 }
@@ -12,4 +8,20 @@ body{
 
 .navbar-inverse .navbar-brand {
 	color: #FFFFFF;
+}
+
+strong{
+  font-size: 20px;
+}
+
+.navbar{
+  border-radius: 0;
+}
+
+.navbar-brand{
+  font-family: 'Satisfy', cursive;
+}
+
+#logo {
+	width: 37px;
 }
