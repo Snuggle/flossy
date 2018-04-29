@@ -1,3 +1,9 @@
-<ul>
-  <li><a href="#">User name here</a></li>
-</ul>
+{% if all_users %}
+  <ul>
+    {% for user in all_users %}
+    <li><a href="/messages/{{ user.username }}/">{{ user.username }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h2>You don't have any contacts!</h2>
+{% endif %}
