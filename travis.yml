@@ -1,18 +1,18 @@
 language: python
-    python:
-      - "3.6"
-    allowed-failures:
-      - "2.7"
-      - "3.5"
-      - "3.7"
-      - "nightly"
-    services:
-      - mysql
-    env:
-      -DJANGO=2.0 DB=mysql
-    install:
-      - pip install -r requirements.txt
-    before_script:
-      - mysql -e 'create database test;' -u root
-    script:
-      - python manage.py test
+python:
+  - "3.6"
+allowed-failures:
+  - "2.7"
+  - "3.5"
+  - "3.7"
+  - "nightly"
+services:
+  - mysql
+env:
+  -DJANGO=2.0 DB=mysql
+install:
+  - pip install -r requirements.txt
+before_script:
+  - mysql -e 'create database test;' -u root
+script:
+  - python manage.py test
