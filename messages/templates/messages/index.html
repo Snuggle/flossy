@@ -3,9 +3,18 @@
 
 {% block body %}
 <div class="container-fluid">
+    <h1 id=index_welcome>Welcome<h1>
 
-    <h1>Hi</h1>
+    <p>We're a brand-new instant messaging service designed for you and your friends!</p>
+    <p>This service is based on a modern & robust LEMP stack - Linux, Nginx, MySQL & Python, for 100% uptime, scalability and performance. It'll be made 100% open-source within a few months, after this gets submitted as my Computer Science project.</p>
 
 </div>
+<br>
+<div id=github-buttons>
+  <iframe src="https://ghbtns.com/github-btn.html?user=snuggle&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+  <br>
+  <iframe src="https://ghbtns.com/github-btn.html?user=snuggle&repo=flossy&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+<div>
+<img id='flossball' src={% static 'messages/images/flossball.png' %}>
 
 {% endblock %}

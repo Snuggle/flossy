@@ -25,3 +25,18 @@ strong{
 #logo {
 	width: 37px;
 }
+
+#flossball {
+  padding-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#github-buttons {
+  padding-left: 1.5%
+}
+
+iframe {
+ margin-top: 5px;
+}
