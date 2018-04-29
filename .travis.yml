@@ -1,11 +1,12 @@
 language: python
 python:
   - "3.6"
-allowed-failures:
-  - "2.7"
-  - "3.5"
-  - "3.7"
-  - "nightly"
+matrix:
+  allowed-failures:
+    - "2.7"
+    - "3.5"
+    - "3.7"
+    - "nightly"
 services:
   - mysql
 env:
