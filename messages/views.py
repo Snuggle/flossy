@@ -13,4 +13,5 @@ def messageList(request, contact):
         user = Contact.objects.get(id=contact)
     except Contact.DoesNotExist:
         raise Http404("Contact does not exist.")
-    return render(request, 'messages/user.html', {'user': user})
+    messages = user.message_set.all()
+    return render(request, 'messages/user.html', {'user': user, 'messages': messages})

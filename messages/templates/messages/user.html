@@ -1,2 +1,5 @@
 <h2>{{ user }}</h2>
-Insert placeholder message
+
+{% for message in messages %}
+<li>{{ message.datetime }} | {{ message.message_text }}</li>
+{% endfor %}
