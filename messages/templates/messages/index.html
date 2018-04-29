@@ -1,7 +1,7 @@
-{% if all_users %}
+{% if my_contacts %}
   <ul>
-    {% for user in all_users %}
-    <li><a href="/messages/{{ user.username }}/">{{ user.username }}</a></li>
+    {% for contact in my_contacts %}
+    <li><a href="/messages/{{ contact.id }}/">{{ contact.username }}</a></li>
     {% endfor %}
   </ul>
 {% else %}

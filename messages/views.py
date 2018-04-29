@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from .models import User
+from django.http import Http404
+from .models import Contact
 from django.template import loader
 from django.http import HttpResponse
 
 def index(request):
-    all_users = User.objects.all()
-    context = {
-        'all_users': all_users,
-    }
-    return render(request, 'messages/index.html', context)
+    my_contacts = Contact.objects.all()
+    return render(request, 'messages/index.html', {'my_contacts': my_contacts})
 
 def messageList(request, contact):
-    return HttpResponse("<h2>Messages for Contact: " + str(contact) + "</h2>")
+    try:
+        user = Contact.objects.get(id=contact)
+    except Contact.DoesNotExist:
+        raise Http404("Contact does not exist.")
+    return render(request, 'messages/user.html', {'user': user})
