@@ -1,14 +1,12 @@
 language: python
 python:
   - "3.6"
-  - "3.7"
   - "3.7-dev"
   - "nightly"
 services:
   - mysql
 env:
-  - DJANGO_VERSION=1.11.12 DB=mysql
-  - DJANGO_VERSION=2.0 DB=mysql
+  - DJANGO_VERSION=2.0.4 DB=mysql
 install:
   - pip install -q Django==$DJANGO_VERSION
   - pip install -r requirements.txt
