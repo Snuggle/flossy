@@ -1,6 +1,11 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+{% extends 'messages/base.html' %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% block body %}
 <h2>{{ user }}</h2>
 
 {% for message in messages %}
 <li>{{ message.datetime }} | {{ message.message_text }}</li>
 {% endfor %}
+{% endblock %}

@@ -1,3 +1,15 @@
 body{
   background: white url("images/background.png")
 }
+
+.navbar-inverse{
+  background-color: #343a40
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #FFFFFF;
+}

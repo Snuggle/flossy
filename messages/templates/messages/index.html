@@ -1,14 +1,19 @@
-<!-- Loads static files -->
-{% load staticfiles %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'messages/style.css' %}"/>
+{% extends 'messages/base.html' %}
 
-{% if my_contacts %}
-  <ul>
-    {% for contact in my_contacts %}
-    <li><a href="/messages/{{ contact.id }}/">{{ contact.contact }}</a></li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <h2>You don't have any contacts!</h2>
-{% endif %}
+{% block title %} {% endblock %}
+
+{% block body %}
+<h3>Contacts:</h3>
+  {% if my_contacts %}
+    <ul>
+      {% for contact in my_contacts %}
+      <li><a href="/messages/{{ contact.id }}/">{{ contact.contact }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>You don't have any contacts!</h2>
+  {% endif %}
+<footer>
+  Flossy.me
+</footer>
+{% endblock %}
