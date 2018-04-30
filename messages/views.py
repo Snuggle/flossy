@@ -74,8 +74,8 @@ class SendMessageForm(View):
 
             messages = sorted(messages, key=lambda message: message.datetime)
 
-        except:
-            print("DOES NOT EXIST")
+        except DoesNotExist:
+            print("User attempted to access a contact that hasn't added them back.")
             error_message = "This user hasn't added you back yet!"
 
         return render(request, 'messages/user.html', {'contact_context': contact, 'error_message': error_message, 'messages': messages})
