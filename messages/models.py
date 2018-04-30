@@ -20,7 +20,8 @@ class Contact(models.Model):
 
 class Message(models.Model):
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
-    datetime = models.DateTimeField(auto_now=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    datetime = models.DateTimeField(auto_now_add=True, blank=True)
     message_text = models.CharField(max_length=1024)
     embed_image = models.CharField(max_length=100, blank=True)
 

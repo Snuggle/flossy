@@ -8,18 +8,20 @@
     <strong>{{ error_message }}</strong>
   {% else %}
     {% for message in messages %}
-    <li><b>{{ contact_context.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
+    <li><b>{{ message.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
     {% endfor %}
     {% for message in incomingMessages %}
-    <li><b>{{ contact_context.contact }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
+    <li><b>{{ message.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
     {% endfor %}
+    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="message" id="message", value=""/>
+    <br><br>
+    <div class="form-group">
+        <div>
+            <button type="Send" class="btn btn-success">Submit</button>
+        </div>
+    </div>
   {% endif %}
 
-  <input type="text" name="message" id="message", value=""/>
-  <br><br>
-  <div class="form-group">
-      <div>
-          <button type="Send" class="btn btn-success">Submit</button>
-      </div>
-  </div>
 {% endblock %}

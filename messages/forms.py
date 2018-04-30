@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import Contact
+from .models import Contact, Message
 from django import forms
 from django.db import models
 
@@ -21,3 +21,8 @@ class AddContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['owner', 'contact']
+
+class SendMessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['message_text']

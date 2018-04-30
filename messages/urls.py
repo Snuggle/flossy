@@ -22,7 +22,7 @@ urlpatterns = [
     path('login/', views.LoginForm.as_view(), name='login'),
 
     # /messages/Dave
-    path('messages/<str:contact>/', views.messageList, name='messageList'),
+    path('messages/<str:contact>/', views.SendMessageForm.as_view(), name='SendMessageView'),
 
     # /
     path('', views.index_view),

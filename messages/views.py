@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
-from .models import Contact
+from .models import Contact, Message
 from django.template import loader
 from django.http import HttpResponse
+from itertools import chain
 from django.contrib.auth.models import User
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import RegisterForm, LoginForm, AddContactForm
+from .forms import RegisterForm, LoginForm, AddContactForm, SendMessageForm
 
 def index_view(request):
     return render(request, 'messages/index.html', None)
@@ -45,31 +46,46 @@ class AddContactForm(View):
         contact.save()
         return redirect('/')
 
-@login_required(login_url='/login/')
-def messageList(request, contact):
-    error_message = None
-    incomingContact = None
-    messages = None
-    incomingMessages = None
-    try:
-        contact = Contact.objects.get(id=contact)
-    except Contact.DoesNotExist:
-        raise Http404("Contact does not exist.")
+class SendMessageForm(View):
+    form_class = SendMessageForm
+    template_name = 'messages/user.html'
 
-    try:
-        incomingContacts = Contact.objects.filter(owner=contact.contact)
-        print(incomingContacts)
-        incomingContact = incomingContacts.get(contact=contact.owner)
-        print(incomingContact)
-        if incomingContact is None:
-            raise Exception.ValueError
-        messages = contact.message_set.all()
-        incomingMessages = incomingContact.message_set.all()
-    except:
-        print("DOES NOT EXIST")
-        error_message = "This user hasn't added you back yet!"
+    def get(self, request, contact):
+        error_message = None
+        incomingContact = None
+        messages = None
+        incomingMessages = None
+        try:
+            contact = Contact.objects.get(id=contact)
+        except Contact.DoesNotExist:
+            raise Http404("Contact does not exist.")
 
-    return render(request, 'messages/user.html', {'contact_context': contact, 'error_message': error_message, 'messages': messages, 'incomingMessages': incomingMessages})
+        try:
+            incomingContacts = Contact.objects.filter(owner=contact.contact)
+            print(incomingContacts)
+            incomingContact = incomingContacts.get(contact=contact.owner)
+            print(incomingContact)
+            if incomingContact is None:
+                raise Exception.ValueError
+            outgoingMessages = contact.message_set.all()
+            incomingMessages = incomingContact.message_set.all()
+
+            messages = list(chain(incomingMessages, outgoingMessages))
+
+            messages = sorted(messages, key=lambda message: message.datetime)
+
+        except:
+            print("DOES NOT EXIST")
+            error_message = "This user hasn't added you back yet!"
+
+        return render(request, 'messages/user.html', {'contact_context': contact, 'error_message': error_message, 'messages': messages})
+
+    def post(self, request, contact):
+        contactObject = Contact.objects.get(id=contact)
+        message = request.POST['message']
+        messageObject = Message(contact=contactObject, message_text=message, owner=contactObject.owner)
+        messageObject.save()
+        return redirect(f'/messages/{contactObject.id}')
 
 def Logout(request):
     logout(request)
