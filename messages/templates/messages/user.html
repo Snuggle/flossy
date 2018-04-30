@@ -1,11 +1,25 @@
 {% extends 'messages/base.html' %}
 {% block contacts-active %}active{% endblock %}
-{% block title %}{{ user }}{% endblock %}
+{% block title %}{{ contact_context }}{% endblock %}
 
 {% block body %}
-<h2>{{ user }}</h2>
+<h2>{{ contact_context }}</h2>
+  {% if error_message %}
+    <strong>{{ error_message }}</strong>
+  {% else %}
+    {% for message in messages %}
+    <li><b>{{ contact_context.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
+    {% endfor %}
+    {% for message in incomingMessages %}
+    <li><b>{{ contact_context.contact }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
+    {% endfor %}
+  {% endif %}
 
-{% for message in messages %}
-<li>{{ message.datetime }} | {{ message.message_text }}</li>
-{% endfor %}
+  <input type="text" name="message" id="message", value=""/>
+  <br><br>
+  <div class="form-group">
+      <div>
+          <button type="Send" class="btn btn-success">Submit</button>
+      </div>
+  </div>
 {% endblock %}

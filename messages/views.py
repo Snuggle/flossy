@@ -3,31 +3,107 @@ from django.http import Http404
 from .models import Contact
 from django.template import loader
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserForm
+from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm, LoginForm, AddContactForm
 
 def index_view(request):
     return render(request, 'messages/index.html', None)
 
+@login_required(login_url='/login/')
 def contacts(request):
-    my_contacts = Contact.objects.all()
+    my_contacts = []
+    logged_in_user = request.user
+    all_contacts = Contact.objects.all()
+    for contact in all_contacts:
+        if contact.owner == logged_in_user:
+            my_contacts.append(contact)
     return render(request, 'messages/contacts.html', {'my_contacts': my_contacts})
 
+@login_required(login_url='/login/')
+def settings(request):
+    return render(request, 'messages/settings.html', None)
+
+class AddContactForm(View):
+    form_class = AddContactForm
+    template_name = 'messages/add_contact.html'
+
+    # Display blank login form
+    def get (self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        contacts = Contact.objects.all()
+
+        username = request.POST['username']
+        user = User.objects.get(username=username)
+        contact = Contact(owner=request.user, contact=user)
+        contact.save()
+        return redirect('/')
+
+@login_required(login_url='/login/')
 def messageList(request, contact):
+    error_message = None
+    incomingContact = None
+    messages = None
+    incomingMessages = None
     try:
-        user = Contact.objects.get(id=contact)
+        contact = Contact.objects.get(id=contact)
     except Contact.DoesNotExist:
         raise Http404("Contact does not exist.")
-    messages = user.message_set.all()
-    return render(request, 'messages/user.html', {'user': user, 'messages': messages})
+
+    try:
+        incomingContacts = Contact.objects.filter(owner=contact.contact)
+        print(incomingContacts)
+        incomingContact = incomingContacts.get(contact=contact.owner)
+        print(incomingContact)
+        if incomingContact is None:
+            raise Exception.ValueError
+        messages = contact.message_set.all()
+        incomingMessages = incomingContact.message_set.all()
+    except:
+        print("DOES NOT EXIST")
+        error_message = "This user hasn't added you back yet!"
+
+    return render(request, 'messages/user.html', {'contact_context': contact, 'error_message': error_message, 'messages': messages, 'incomingMessages': incomingMessages})
 
 def Logout(request):
     logout(request)
     return redirect('/')
 
-class UserForm(View):
-    form_class = UserForm
+class LoginForm(View):
+    form_class = LoginForm
+    template_name = 'messages/login_form.html'
+
+    # Display blank login form
+    def get (self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    # Process data from form
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        # returns User object if credentials are valid
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None: # Check user exists
+            if user.is_active: # Check user is "active"
+
+                login(request, user)
+                return redirect('/')
+
+        return render(request, self.template_name, {'form': form})
+
+class RegisterForm(View):
+    form_class = RegisterForm
     template_name = 'messages/registration_form.html'
 
     # Display blank registration form

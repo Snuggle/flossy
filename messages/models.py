@@ -9,14 +9,14 @@ class Profile(models.Model):
         return self.user.username
 
 class Contact(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, default='Unknown', related_name='+')
-    contact = models.OneToOneField(User, on_delete=models.CASCADE, default='Unknown', related_name='+')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default='Unknown', unique=False, related_name='+')
+    contact = models.ForeignKey(User, on_delete=models.CASCADE, default='Unknown', unique=False, related_name='+')
     # The + means that this will not have a backwards relation for this attribute.
 
     id = sorted([str(owner), str(contact)], key=str.lower)
 
     def __str__(self):
-        return f'{self.owner} ⬌ {self.contact}' # This represents this object as a string.
+        return f'{self.owner} ⯈ {self.contact}' # This represents this object as a string.
 
 class Message(models.Model):
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)

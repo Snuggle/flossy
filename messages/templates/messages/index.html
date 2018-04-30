@@ -3,7 +3,11 @@
 
 {% block body %}
 <div class="container-fluid">
+    {% if user.get_username %}
+    <h1 id=index_welcome>Welcome, {{ user.get_username }}<h1>
+    {% else %}
     <h1 id=index_welcome>Welcome<h1>
+    {% endif %}
 
     <p>We're a brand-new instant messaging service designed for you and your friends!</p>
     <p>This service is based on a modern & robust LEMP stack - Linux, Nginx, MySQL & Python, for 100% uptime, scalability and performance. It'll be made 100% open-source within a few months, after this gets submitted as my Computer Science project.</p>
