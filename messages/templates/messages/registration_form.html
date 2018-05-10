@@ -1,6 +1,6 @@
-{% extends 'messages/base.html' %}
-{% block title %}Register{% endblock %}
-{% block register-active %}active{% endblock %}
+{% extends 'messages/base.html' %} <!-- This gets the "base" HTML template -->
+{% block title %}Register{% endblock %} <!-- Set title -->
+{% block register-active %}active{% endblock %} <!-- Set as active page in navbar -->
 
 {% block body %}
 <div class="container-fluid">
@@ -10,12 +10,12 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>Register for an Account</h3>
-                    {% if error_message %}
+                    {% if error_message %} <!-- If there's any form of error, display it. -->
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {% include 'messages/form_template.html' %}
+                        {% include 'messages/form_template.html' %} <!-- Include the generic form template -->
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>

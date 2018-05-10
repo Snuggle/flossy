@@ -1,9 +1,9 @@
-{% extends 'messages/base.html' %}
-{% load staticfiles %}
+{% extends 'messages/base.html' %} <!-- This gets the "base" HTML template -->
+{% load staticfiles %} <!-- Load /messages/static/[...] -->
 
 {% block body %}
 <div class="container-fluid">
-    {% if user.get_username %}
+    {% if user.get_username %} <!-- If the user is logged in, display username in welcome page -->
     <h1 id=index_welcome>Welcome, {{ user.get_username }}<h1>
     {% else %}
     <h1 id=index_welcome>Welcome<h1>
@@ -14,7 +14,7 @@
 
 </div>
 <br>
-{% if user.get_username %}
+{% if user.get_username %} <!-- If the user is logged in, display GitHub buttons -->
 <div id=github-buttons>
   <iframe src="https://ghbtns.com/github-btn.html?user=snuggle&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
   <br>

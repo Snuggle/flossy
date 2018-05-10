@@ -1,17 +1,20 @@
-{% extends 'messages/base.html' %}
-{% block contacts-active %}active{% endblock %}
+{% extends 'messages/base.html' %} <!-- This gets the "base" HTML template -->
+{% block contacts-active %}active{% endblock %} <!-- Set as active page in navbar -->
 
 {% block title %} {% endblock %}
 
 {% block body %}
 <h3>Your Contacts</h3>
+  <!-- If the user has any contacts; -->
   {% if my_contacts %}
     <ul>
+      <!-- For each contact that exists, display in an unorderd list -->
       {% for contact in my_contacts %}
       <strong><a href="/messages/{{ contact.id }}/">{{ contact.contact }}</a></strong><br>
       {% endfor %}
     </ul>
   {% else %}
+    <!-- Tell them they have no contacts added -->
     <h2>You don't have any contacts!</h2>
   {% endif %}
 {% endblock %}

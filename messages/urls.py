@@ -1,6 +1,9 @@
 from django.urls import path, re_path
 from . import views
 
+# This file registers all the URL patterns that can be processed.
+# Comments have been added to visuailise what they're matching.
+
 urlpatterns = [
 
     # /settings

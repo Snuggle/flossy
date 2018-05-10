@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles %}  <!-- Load /messages/static/[...] -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
             <a class="navbar-brand" href="/"><img id="logo" src="{% static 'messages/images/floss.png' %}"></img></a>
         </div>
     <div id="topNavBar" class="navbar-collapse collapse">
-      {% if user.get_username %}
+      {% if user.get_username %} <!-- If user is logged in -->
       <ul class="nav navbar-nav">
           <li class="{% block contacts-active %}{% endblock %}"><a href="/messages"><i class="fa fa-address-book" ></i>&nbsp; My Contacts</a></li>
           <li class="{% block add-contact-active %}{% endblock %}"><a href="/add_contact"><i class="fa fa-plus" ></i>&nbsp; Add Contact</a></li>
@@ -34,7 +34,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="{% block admin-active %}{% endblock %}"><a href="/admin"><i class="fa fa-database" ></i>&nbsp; Admin</a></li>
       <li class="">
-        {% if user.get_username %}
+        {% if user.get_username %} <!-- If user is logged in -->
         <li class=""><a href="/logout"><i class="fa fa-power-off" ></i>&nbsp; {{ user.get_username }} (Logout) </a></li>
         {% else %}
         <li class=""><a href="/login"><i class="fa fa-power-off" ></i>&nbsp; Sign in</a></li>

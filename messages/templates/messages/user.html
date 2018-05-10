@@ -1,16 +1,13 @@
-{% extends 'messages/base.html' %}
-{% block contacts-active %}active{% endblock %}
-{% block title %}{{ contact_context }}{% endblock %}
+{% extends 'messages/base.html' %} <!-- This gets the "base" HTML template -->
+{% block contacts-active %}active{% endblock %} <!-- Set as active page in navbar -->
+{% block title %}{{ contact_context }}{% endblock %} <!-- Set as contact as title -->
 
 {% block body %}
 <h2>{{ contact_context }}</h2>
-  {% if error_message %}
+  {% if error_message %} <!-- If there's any form of error, display it. -->
     <strong>{{ error_message }}</strong>
   {% else %}
-    {% for message in messages %}
-    <li><b>{{ message.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
-    {% endfor %}
-    {% for message in incomingMessages %}
+    {% for message in messages %} <!-- For each message in the contact's message list -->
     <li><b>{{ message.owner }}</b> ― {{ message.message_text }} <div class=datetime>{{ message.datetime }}</div></li>
     {% endfor %}
     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">

@@ -7,3 +7,5 @@ client = Client()
 for path in testPaths:
     response = client.get(path)
     print(f"Path \"{path}\" exited with code: {response.status_code}")
+
+# Simple test to check that the paths above are functional without errors.

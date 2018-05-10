@@ -3,6 +3,7 @@ from .models import Contact, Message
 from django import forms
 from django.db import models
 
+# This file creates modelforms for the models and fields that they depend upon.
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 

@@ -1,6 +1,6 @@
-{% extends 'messages/base.html' %}
-{% block title %}Register{% endblock %}
-{% block register-active %}active{% endblock %}
+{% extends 'messages/base.html' %} <!-- This gets the "base" HTML template -->
+{% block title %}Register{% endblock %} <!-- Set title -->
+{% block register-active %}active{% endblock %} <!-- Set as active page in navbar -->
 
 {% block body %}
 <div class="container-fluid">
@@ -10,12 +10,12 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>Add a person as a contact! 🙂</h3>
-                    {% if error_message %}
+                    {% if error_message %} <!-- Display error message, if one exists -->
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="text" name="username" id="username", value=""/>
+                        <input type="text" name="username" id="username", value=""/> <!-- Simple text form with a "submit button" -->
                         <br><br>
                         <div class="form-group">
                             <div class="col-sm-10">
