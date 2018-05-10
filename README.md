@@ -31,7 +31,7 @@ A revolutionary way to communicate with your friends over the internet! Complete
 This is an instant messaging web-application that I've made as part of my Computer-Science A-Level Project.
 
 ## How to use?
-Using Flossy is extremely simple! Just head over to [https://flossy.me](flossy) and either register an account or login! You will need a friend or another account to actually send messages, however, as you won't be able to message anyone without them adding you back as a contact.
+Using Flossy is extremely simple! Just head over to [https://flossy.me](flossy) and either register an account or login! You will need a friend or another account to actually send messages, however, as you won't be able to message anyone without them adding you back as a contact. See [passwords.txt](passwords.txt) for some dummy testing accounts.
 
 ## Why did you create this?
 With the recent scandals concerning Facebook's breach of user's privacy, I realised that there isn't really a instant messaging service that is reliable, secure and most importantly, open-source. How can you feel safe that your messages are secure and private unless you can look at the code yourself? Heck. I think you should even be able to host the service yourself, if you really want to. It's open-source! Go for it!
