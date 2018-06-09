@@ -12,8 +12,8 @@
         <img src="https://img.shields.io/badge/Framework-Django-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
              alt="Framework: Django">
     </a>
-    <a href="https://travis-ci.com/Snuggle/flossy" style="text-decoration: none">
-        <img src="https://img.shields.io/travis/Snuggle/flossy.svg?colorA=343a40&colorB=a3a3a3"
+    <a href="https://gitlab.com/SnuggIe/flossy/pipelines" style="text-decoration: none">
+        <img src="https://img.shields.io/badge/Build-Not yet implemented 🙁-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
              alt="Build: Unknown">
     </a>
     <a href="https://flossy.me">
