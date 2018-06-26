@@ -5,23 +5,23 @@
 </p>
 <p align="center">
     <a href="https://flossy.me">
-        <img src="https://img.shields.io/badge/Language-Python-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
+        <img src="https://img.shields.io/badge/Language-Python-brightgreen.svg?colorA=343a40&colorB=a3a3a3&style=flat-square"
              alt="Language: Python">
     </a>
     <a href="https://flossy.me">
-        <img src="https://img.shields.io/badge/Framework-Django-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
+        <img src="https://img.shields.io/badge/Framework-Django-brightgreen.svg?colorA=343a40&colorB=a3a3a3&style=flat-square"
              alt="Framework: Django">
     </a>
     <a href="https://gitlab.com/SnuggIe/flossy/pipelines" style="text-decoration: none">
-        <img src="https://img.shields.io/badge/Build-Not yet implemented 🙁-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
+        <img src="https://img.shields.io/badge/Build-Not yet implemented 🙁-brightgreen.svg?colorA=343a40&colorB=a3a3a3&style=flat-square"
              alt="Build: Unknown">
     </a>
     <a href="https://flossy.me">
-        <img src="https://img.shields.io/badge/Compatible Python Versions-v3.6, v3.7, nightly-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
+        <img src="https://img.shields.io/badge/Compatible Python Versions-v3.6, v3.7, nightly-brightgreen.svg?colorA=343a40&colorB=a3a3a3&style=flat-square"
              alt="Compatible Python Versions: v3.6, v3.6, nightly">
     </a>
         <a href="https://flossy.me">
-        <img src="https://img.shields.io/badge/Visit at-https://flossy.me-brightgreen.svg?colorA=343a40&colorB=a3a3a3"
+        <img src="https://img.shields.io/badge/Visit at-https://flossy.me-brightgreen.svg?colorA=343a40&colorB=a3a3a3&style=flat-square"
              alt="Visit at: https://flossy.me">
     </a>
 </p>
