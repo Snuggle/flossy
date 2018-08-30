@@ -1,6 +1,6 @@
 <p align="center">
    <a href="https://flossy.me" style="text-decoration: none">
-      <img src="https://flossy.me/static/messages/images/flossball.png">
+      <img src="https://gitlab.com/Snuggie/flossy/raw/master/messages/static/messages/images/flossball.png">
    </a>
 </p>
 <p align="center">
