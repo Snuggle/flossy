@@ -83,7 +83,7 @@ class SendMessageForm(View):
             error_message = "This user hasn't added you back yet!"
 
         # Return message form with contact_context, any error messages and sorted message chain.
-        return render(request, 'messages/user.html', {'contact_context': contact, 'error_message': error_message, 'messages': messages})
+        return render(request, 'messages/user.html', {'contact_context': contact, 'messages': messages})
 
     def post(self, request, contact):
         # If user sends a message
